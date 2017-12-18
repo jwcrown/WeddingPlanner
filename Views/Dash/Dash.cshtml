@@ -1,0 +1,27 @@
+@model WeddingPlanner.Models.Dashboard
+@using WeddingPlanner.Models;
+<h1>Welcome to the Wedding Planner</h1>
+
+<table class="table table-stripped">
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guests</th>
+        <th>Action</th>
+    </tr>
+    @foreach(Wedding w in Model.Weddings)
+    {
+        <tr>
+            <td><a href="show/@w.WeddingId">@w.Wedder1 & @w.Wedder2</a></td>
+            <td>@w.WeddingDate</td>
+            <td>@w.Guests.Count()</td>
+            @if(w.Guests.Where(g => g.UserId == Model.User.UserId).SingleOrDefault() == null)
+            {<td><a href="rsvp/@w.WeddingId">RSVP</a></td>}
+            else
+            {<td><a href="unrsvp/@w.WeddingId">Un-RSVP</a></td>}
+        </tr>
+    }
+</table>
+<a href="/CreateForm">New Wedding</a>
+
+

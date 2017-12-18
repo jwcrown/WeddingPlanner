@@ -1,0 +1,11 @@
+@model WeddingPlanner.Wedding
+<h1>@Model.Wedder1 and @Model.Wedder2's Wedding</h1>
+<h3>@Model.WeddingDate</h3>
+<h3>Guests:</h3>
+<ul>
+@foreach(RSVP rsvp in @Model.Guests)
+{
+    <li>@rsvp.Guest.FirstName @rsvp.Guest.LastName</li>
+}
+</ul>
+
